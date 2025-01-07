@@ -92,9 +92,6 @@ def create_interfaces(row):
             'description': 'SFP/RJ45 Combo',
             'enabled': True
         }
-        if is_poe:
-            iface['poe_mode'] = 'pse'
-            iface['poe_type'] = 'type2-ieee802.3at'
         interfaces.append(iface)
         int_index_1g += 1
 
