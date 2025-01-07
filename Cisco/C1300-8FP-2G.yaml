@@ -53,10 +53,16 @@ interfaces:
     poe_type: type2-ieee802.3at
   - name: GigabitEthernet9
     type: 1000base-x-sfp
+    description: SFP/RJ45 Combo
     enabled: true
+    poe_mode: pse
+    poe_type: type2-ieee802.3at
   - name: GigabitEthernet10
     type: 1000base-x-sfp
+    description: SFP/RJ45 Combo
     enabled: true
+    poe_mode: pse
+    poe_type: type2-ieee802.3at
   - name: Vlan1
     type: virtual
     enabled: true
