@@ -82,6 +82,7 @@ def create_interfaces(row):
     num_two_gi = int(row['TwoGigabitEthernet'])
     for _ in range(num_two_gi):
         # We'll name them the same as 1G for simplicity, but the type is 2.5G.
+        # according to the oneline simulator, the numbering continues for the 2.5G ports, but then picks up again in the 1G ports (!?)
         iface = {
             'name': f"{base_name_1g}{int_index_1g}" if is_stacking else f"{base_name_1g}{int_index_1g}",
             'type': '2.5gbase-t',  # or "2.5gbase-t"
@@ -186,7 +187,6 @@ def main(csv_filename='models.csv'):
                 'comments': '[Catalyst 1300 Datasheet](https://www.cisco.com/c/en/us/products/collateral/switches/catalyst-1300-series-switches/nb-06-cat1300-ser-data-sheet-cte-en.html)',
                 'weight': weight_lbs,
                 'weight_unit': 'lb',
-
                 'interfaces': create_interfaces(row),
                 'console-ports': create_console_ports(row),
                 'power-ports': [
@@ -202,8 +202,8 @@ def main(csv_filename='models.csv'):
             # Check for front and rear images named using the device slug,
             # e.g., "cisco-some-switch-front.png" and "cisco-some-switch-rear.png"
             #
-            front_path = os.path.join("elevation-images", f"{filename.lower()}.front.png")
-            rear_path  = os.path.join("elevation-images", f"{filename.lower()}.rear.png")
+            front_path = os.path.join("elevation-images", f"{device_slug.lower()}.front.png")
+            rear_path  = os.path.join("elevation-images", f"{device_slug.lower()}.rear.png")
 
             front_exists = os.path.isfile(front_path)
             rear_exists = os.path.isfile(rear_path)
